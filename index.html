@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bate Papo UOL</title>
+
+    <link rel="stylesheet" href="reset.css" />
+    <link rel="stylesheet" href="style.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <div class="telaDeEntrada"></div>
+    <!--Fecha Tela de Entrada-->
+    <div class="paginaInicial">
+      <div class="barraTopo">
+        <div class="logo">
+          <img src="./images/logo.svg" />
+        </div>
+
+        <div class="imag2">
+          <img src="./images/2.svg" />
+        </div>
+      </div>
+      <!--Fecha barra topo-->
+
+      <div>
+        <ul class="mensagem">
+        </ul>
+      </div>
+
+      <div class="barraDeMensagem">
+        <div class="escreverMensagem">
+          <input class="mensagemNova" type="text" placeholder="Escreva aqui..." />
+        </div>
+
+        <div class="imag1" onclick="botao(this)">
+          <ion-icon name="paper-plane-outline"></ion-icon>
+        </div>
+      </div>
+    </div>
+    <!--Fecha pagina inicial-->
+
+    <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

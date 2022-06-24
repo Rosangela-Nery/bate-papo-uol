@@ -1,0 +1,87 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  .paginaInicial {
+    font-family: "Roboto";
+    width: 414px;
+    height: 700px;
+    background: #e5e5e5;
+    padding-top: 100px;
+  
+    touch-action: none;
+  }
+  
+  .barraTopo {
+    width: 414px;
+    height: 80px;
+    background-color: white;
+    box-shadow: -4px 4px 10px gray;
+    padding: 0 20px;
+  
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+  
+    z-index: 1;
+  
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
+  
+  .logo {
+    width: 75px;
+    height: 53px;
+  }
+  
+  .imag2 {
+    width: 42.19px;
+    height: 30.94px;
+  }
+  
+  li {
+    width: 375px;
+    height: 40px;
+    background: white;
+  }
+  
+  .barraDeMensagem {
+    width: 414px;
+    height: 80px;
+    background: white;
+    box-shadow: 3px -4px 10px gray;
+    padding: 0 20px;
+  
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+  
+    z-index: 1;
+  
+    position: fixed;
+    bottom: 0;
+    left: 0;
+  }
+  
+  .escreverMensagem > input {
+    width: 145px;
+    height: 30px;
+    font-size: 18px;
+    font-style: italic;
+    font-weight: 400;
+    border: 0;
+  }
+  
+  .imag1 > ion-icon {
+    width: 26px;
+    height: 26px;
+    cursor: pointer;
+  }
+  
+  ion-icon:active {
+    transform: scale(0.8);
+  }
+  

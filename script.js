@@ -1,20 +1,26 @@
 let nome = prompt("Digite o seu nome para logar!");
 let nomeDeUsuario = { name: nome };
+// let mensagem = [];
 
 enviarNome();
 
 function buscarMensagem() {
     let promessa = axios.get("https://mock-api.driven.com.br/api/v6/uol/messages");
 
-
-    promessa.then(manterConexao);
+    promessa.then((resp) => {
+      console.log("azul: ", resp);
+      redenrizarMensagem(resp.data);
+    })
+    .catch((error) => {
+      console.log("Vermelho: ", error);
+    })
 }
 
 function enviarNome(resp) {
     let promise = axios.post("https://mock-api.driven.com.br/api/v6/uol/participants", nomeDeUsuario);
 
     promise.then((resp) => {
-      console.log(resp);
+      console.log('Rosa: ', resp);
       manterConexao();
       buscarMensagem();
     })
@@ -43,44 +49,48 @@ function manterConexao(resp) {
 
 
 
-function redenrizarMensagem() {
+function redenrizarMensagem(mensagens) {
   let ul = document.querySelector(".mensagem");
   ul.innerHTML = "";
+  let classe = '';
+  from = ''
+  paraQuem = ''
 
-  for(let i = 0; i < mensagem.length; i++) {
-      ul.innerHTML += `
-          <li>
-              ${mensagem[i].type}
-          </li>
-      `;
-  }
+  mensagens.forEach(mensagem => {
+    if(mensagem.type === "private_message") {
+      classe = 'rosa';
+      from = mensagem.to + ":";
+      paraQuem = ' reservadamente para '
+    }
+    else if(mensagem.type === "status") {
+      classe = 'cinza';
+      from = '';
+      paraQuem = '';
+    }
+    else if(mensagem.type === "message") {
+      classe = 'branco';
+      from = mensagem.to + ":";
+      paraQuem = ' para '
+    }
+
+    ul.innerHTML += `
+    <li class="${classe}">
+      <span class="tempo">(${mensagem.time})</span>
+      <span class="from">${mensagem.from}</span>
+      <span class="para">${paraQuem}</span>
+      <span class="alguem">${from}</span>
+      <span class="texto">${mensagem.text}</span>
+    </li>
+    `;
+  })
 }
 
-
-
-
-// buscarMensagem();
-
-  // function enviarMensagem() {
-  //   let promise = axios.post("https://mock-api.driven.com.br/api/v6/uol/messages", mensagemNova);
-  // }
-
-
-// function escreverMensagem(texto) {
-//   mensagem.push(texto);
-//   console.log("texto: ", texto);
-// }
 
 // function botao() {
 //   let input = document.querySelector(".texto");
 //   texto = input.value;
 
 //   if (texto !== null && texto.trim !== "") {
-//     input.value = "";
-//     escreverMensagem(texto);
+//     input.value = "";mensagens
 //   }
-//   return;
 // }
-
-
-

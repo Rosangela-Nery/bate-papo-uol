@@ -16,8 +16,6 @@ function buscarMensagem() {
     })
 
     setTimeout(() => {
-      let ul = document.querySelector(".mensagem");
-      ul.innerHTML = "";
       buscarMensagem()
     }, 3000);
 }

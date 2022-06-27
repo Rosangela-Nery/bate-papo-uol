@@ -14,6 +14,12 @@ function buscarMensagem() {
     .catch((error) => {
       console.log("Vermelho: ", error);
     })
+
+    setTimeout(() => {
+      let ul = document.querySelector(".mensagem");
+      ul.innerHTML = "";
+      buscarMensagem()
+    }, 3000);
 }
 
 function enviarNome(resp) {
@@ -42,12 +48,11 @@ function manterConexao(resp) {
     .catch((error) => {
       console.log('Erro de manter conexão: ', error)
     })
+
     setTimeout(() => {
       manterConexao()
     }, 5000)
 }
-
-
 
 function redenrizarMensagem(mensagens) {
   let ul = document.querySelector(".mensagem");
@@ -61,6 +66,7 @@ function redenrizarMensagem(mensagens) {
       classe = 'rosa';
       from = mensagem.to + ":";
       paraQuem = ' reservadamente para '
+
     }
     else if(mensagem.type === "status") {
       classe = 'cinza';
@@ -83,14 +89,30 @@ function redenrizarMensagem(mensagens) {
     </li>
     `;
   })
+  let elementoQueapareca = document.body.scrollHeight;
+  window.scrollTo(0 , elementoQueapareca);
 }
 
 
-// function botao() {
-//   let input = document.querySelector(".texto");
-//   texto = input.value;
+function botao() {
+  let input = document.querySelector(".mensagemNova");
+  mensagemNova = input.value;
+  console.log('mne: ', mensagemNova)
 
-//   if (texto !== null && texto.trim !== "") {
-//     input.value = "";mensagens
-//   }
-// }
+  if (mensagemNova !== null && mensagemNova.trim !== "") {
+    input.value = "";
+
+    let enviarAlgo = { from: nome, to: "Todos", text: mensagemNova, type: "message" } 
+
+    let enviar = axios.post("https://mock-api.driven.com.br/api/v6/uol/messages", enviarAlgo);
+
+    enviar.then((resp) => {
+      console.log(resp);
+    })
+    .catch((error) => {
+      console.log('Erro de manter conexão: ', error)
+      window.location.reload();
+    })
+  }
+}
+
